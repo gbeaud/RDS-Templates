@@ -1,8 +1,8 @@
 ## Create a Resource Group for Storage
-resource "azurerm_resource_group" "rg_storage" {
-  location = "east us"
-  name     = "af-storage-rg"
-}
+# resource "azurerm_resource_group" "rg_storage" {
+#   location = var.deploy_location
+#   name     = var.rg_name
+# }
 
 # generate a random string (consisting of four characters)
 # https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string
@@ -17,8 +17,8 @@ resource "random_string" "random" {
 ## Create a File Storage Account 
 resource "azurerm_storage_account" "storage" {
   name                     = "stor${random_string.random.id}"
-  resource_group_name      = azurerm_resource_group.rg_storage.name
-  location                 = azurerm_resource_group.rg_storage.location
+  resource_group_name      = var.rg_name
+  location                 = var.deploy_location
   account_tier             = "Premium"
   account_replication_type = "LRS"
   account_kind             = "FileStorage"

@@ -1,5 +1,5 @@
 resource "azurerm_virtual_network" "vnet" {
-  name                = "${var.prefix}-VNet"
+  name                = "vnet-${var.prefix}-terraform"
   address_space       = var.vnet_range
   dns_servers         = var.dns_servers
   location            = var.deploy_location

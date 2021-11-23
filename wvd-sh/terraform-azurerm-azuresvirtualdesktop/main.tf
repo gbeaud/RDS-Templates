@@ -9,7 +9,7 @@ resource "azurerm_virtual_desktop_workspace" "workspace" {
   name                = var.workspace
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.deploy_location
-  friendly_name       = "${var.prefix} Workspace"
+  friendly_name       = "${var.prefix}-terraform-workspace"
   description         = "${var.prefix} Workspace"
 }
 
